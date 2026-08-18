@@ -1,0 +1,191 @@
+/* Block: tabs-grid — Brunswick brands directory
+ * Values extracted from source .brands-view computed styles.
+ * Decorated DOM: .tabs-grid-list (tablist) > .tabs-grid-tab (buttons),
+ *                .tabs-grid-panel (tabpanels) > div > p > a > picture > img
+ */
+
+/* ---------- Tab bar (ul.nav-tabs → .tabs-grid-list) ---------- */
+.tabs-grid .tabs-grid-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: stretch;
+  gap: 6px;
+  max-width: 100%;
+  margin: 0 0 35px;
+  padding: 0;
+  overflow: visible;
+  font-size: var(--body-font-size-m);
+}
+
+/* ---------- Tab button (li.brand-tab → .tabs-grid-tab) ---------- */
+.tabs-grid .tabs-grid-list button.tabs-grid-tab {
+  flex: 1 1 45%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  min-height: 72px;
+  margin: 0;
+  border: 0;
+  border-radius: 0;
+  padding: 16px 20px;
+  background-color: rgb(0 12 30 / 70%);
+  color: #fff;
+  font-family: var(--body-font-family);
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: normal;
+  text-align: left;
+  text-transform: none;
+  text-overflow: clip;
+  white-space: normal;
+  overflow: visible;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.tabs-grid .tabs-grid-list button.tabs-grid-tab p {
+  margin: 0;
+}
+
+.tabs-grid .tabs-grid-list button.tabs-grid-tab:hover {
+  background-color: rgb(0 12 30 / 85%);
+}
+
+.tabs-grid .tabs-grid-list button.tabs-grid-tab[aria-selected='true'] {
+  background-color: rgb(0 86 227 / 90%);
+  color: #fff;
+  font-weight: 600;
+  cursor: default;
+}
+
+/* ---------- Panels (.tab-pane → .tabs-grid-panel) ---------- */
+.tabs-grid .tabs-grid-panel {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  overflow: visible;
+}
+
+.tabs-grid .tabs-grid-panel[aria-hidden='true'] {
+  display: none;
+}
+
+.tabs-grid .tabs-grid-panel > div {
+  padding: 0;
+}
+
+/* ---------- Sub-tab links (Parts & Accessories <ul>) ---------- */
+.tabs-grid .tabs-grid-panel ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px 24px;
+  margin: 0 0 24px;
+  padding: 0;
+}
+
+.tabs-grid .tabs-grid-panel ul li {
+  margin: 0;
+}
+
+.tabs-grid .tabs-grid-panel ul a:any-link {
+  color: var(--text-color);
+  font-family: var(--body-font-family);
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.tabs-grid .tabs-grid-panel ul a:hover {
+  color: var(--accent-color);
+  text-decoration: none;
+}
+
+/* ---------- Logo grid (.flex-4-col → the <p> that wraps the tiles) ---------- */
+/* stylelint-disable-next-line no-descending-specificity */
+.tabs-grid .tabs-grid-panel > div > p {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px 16px;
+  margin: 0 0 28px;
+}
+
+.tabs-grid .tabs-grid-panel > div > p:last-child {
+  margin-bottom: 0;
+}
+
+/* ---------- Logo tile (a.brand-item) ---------- */
+/* stylelint-disable-next-line no-descending-specificity */
+.tabs-grid .tabs-grid-panel > div > p a {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 270 / 187;
+  background-color: #fff;
+  overflow: hidden;
+  text-decoration: none;
+}
+
+.tabs-grid .tabs-grid-panel > div > p a picture {
+  display: contents;
+}
+
+.tabs-grid .tabs-grid-panel > div > p a img {
+  max-width: 75%;
+  max-height: 70%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+
+/* hover reveal: solid brand-blue overlay + "Visit Site" (source rgb(2,106,254)) */
+.tabs-grid .tabs-grid-panel > div > p a::after {
+  content: 'Visit Site';
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--accent-color);
+  color: #fff;
+  font-family: var(--body-font-family);
+  font-size: 18px;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.tabs-grid .tabs-grid-panel > div > p a:hover::after,
+.tabs-grid .tabs-grid-panel > div > p a:focus-visible::after {
+  opacity: 1;
+}
+
+/* ---------- Desktop layout ---------- */
+@media (width >= 600px) {
+  .tabs-grid .tabs-grid-panel > div > p {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px 24px;
+  }
+}
+
+@media (width >= 900px) {
+  .tabs-grid .tabs-grid-list {
+    flex-wrap: nowrap;
+    gap: 6px;
+    font-size: 24px;
+  }
+
+  .tabs-grid .tabs-grid-list button.tabs-grid-tab {
+    flex: 1 1 0;
+    min-height: 120px;
+    padding: 20px;
+    font-size: 24px;
+  }
+
+  .tabs-grid .tabs-grid-panel > div > p {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 60px 30px;
+  }
+}

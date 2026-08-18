@@ -1,0 +1,18 @@
+{
+  "status": "success",
+  "url": "https://www.brunswick.com/",
+  "path": "index",
+  "timestamp": "2026-08-14T01:48:30.054Z",
+  "title": "A Leader in Marine Recreation :: Brunswick Corporation (BC)",
+  "template": "homepage",
+  "blocks": [
+    "hero-banner",
+    "hero-banner",
+    "hero-banner",
+    "carousel-showcase",
+    "columns-split",
+    "tabs-grid",
+    "cards-article",
+    "carousel-logos"
+  ]
+}

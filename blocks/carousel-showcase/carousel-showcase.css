@@ -1,0 +1,155 @@
+/* Block: carousel-showcase — Brunswick ACES innovation showcase (rc3)
+ * One-up centered slider inside a dark (black) section: white text.
+ * Each slide: illustration image → green ACES heading → white centered copy.
+ * Controls below: prev arrow · "N/4" counter · next arrow (no dots).
+ * Values extracted from source .aces-slider computed styles.
+ */
+
+.carousel-showcase {
+  --aces-green: #04e255; /* source h3 color rgb(4, 226, 85) */
+}
+
+.carousel-showcase .carousel-showcase-slides-container {
+  position: relative;
+}
+
+.carousel-showcase .carousel-showcase-slides {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  overflow: scroll clip;
+}
+
+.carousel-showcase .carousel-showcase-slides::-webkit-scrollbar {
+  display: none;
+}
+
+/* One-up centered slide: image on top, heading, then paragraph */
+.carousel-showcase .carousel-showcase-slide {
+  box-sizing: border-box;
+  flex: 0 0 100%;
+  scroll-snap-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  padding: 0 15px;
+  text-align: center;
+}
+
+/* Illustration image — centered, fixed max width (source 300px) */
+.carousel-showcase .carousel-showcase-slide .carousel-showcase-slide-image {
+  margin: 0 0 10px;
+  text-align: center;
+}
+
+.carousel-showcase .carousel-showcase-slide .carousel-showcase-slide-image p {
+  margin: 0;
+}
+
+.carousel-showcase .carousel-showcase-slide .carousel-showcase-slide-image picture {
+  display: inline-block;
+}
+
+.carousel-showcase .carousel-showcase-slide .carousel-showcase-slide-image img {
+  max-width: 300px;
+  width: 100%;
+  height: auto;
+}
+
+/* Text column */
+.carousel-showcase .carousel-showcase-slide .carousel-showcase-slide-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ACES heading — green, Titillium, letter accent in heavier weight */
+.carousel-showcase .carousel-showcase-slide .carousel-showcase-slide-content h3 {
+  margin: 0 0 17px;
+  font-family: var(--heading-font-family);
+  font-size: 23px;
+  font-weight: 700;
+  line-height: 1.17;
+  color: var(--aces-green);
+}
+
+.carousel-showcase .carousel-showcase-slide .carousel-showcase-slide-content h3 strong {
+  font-weight: 900;
+  color: inherit;
+}
+
+/* Body copy — white, EB Garamond, centered, capped width */
+.carousel-showcase .carousel-showcase-slide .carousel-showcase-slide-content p {
+  max-width: 450px;
+  margin: 0;
+  font-family: var(--body-font-family);
+  font-size: 18px;
+  line-height: 1.667;
+  color: #fff;
+  text-align: center;
+}
+
+/* Prev / counter / next controls — centered row below the slides */
+.carousel-showcase .carousel-showcase-navigation-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.carousel-showcase .carousel-showcase-navigation-buttons button {
+  position: relative;
+  width: auto;
+  height: auto;
+  margin: 0;
+  padding: 8px 12px;
+  border: 0;
+  border-radius: 0;
+  background-color: transparent;
+  color: #fff;
+  line-height: 0;
+  cursor: pointer;
+}
+
+.carousel-showcase .carousel-showcase-navigation-buttons button::after {
+  content: '\2190'; /* ← */
+  display: block;
+  border: 0;
+  width: auto;
+  height: auto;
+  position: static;
+  transform: none;
+  font-size: 24px;
+  line-height: 1;
+}
+
+.carousel-showcase .carousel-showcase-navigation-buttons button.slide-next::after {
+  content: '\2192'; /* → */
+  transform: none;
+}
+
+.carousel-showcase .carousel-showcase-navigation-buttons button:hover,
+.carousel-showcase .carousel-showcase-navigation-buttons button:focus-visible {
+  background-color: transparent;
+  opacity: 0.7;
+}
+
+/* "N/4" counter between the arrows */
+.carousel-showcase .carousel-showcase-counter {
+  padding-top: 5px;
+  font-family: var(--heading-font-family);
+  font-size: 23px;
+  font-weight: 700;
+  color: #fff;
+}
+
+/* Source uses arrows + counter only — hide the generated dot indicators */
+.carousel-showcase nav[aria-label] {
+  display: none;
+}

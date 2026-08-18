@@ -1,0 +1,10 @@
+{
+  "type": "da",
+  "sites": {
+    "brunswick": {
+      "previewOrg": "ynaka-adobe",
+      "previewSite": "brunswick",
+      "libraryUrl": "https://main--sta-xwalk-boilerplate--aemysites.aem.page/tools/sidekick/library.json"
+    }
+  }
+}

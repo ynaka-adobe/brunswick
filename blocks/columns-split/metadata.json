@@ -1,0 +1,40 @@
+{
+  "variantName": "columns-split",
+  "baseBlock": "columns",
+  "version": "1.0.0",
+  "created": "2026-08-13T00:00:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://www.brunswick.com/",
+    "originPage": "Brunswick corporate homepage",
+    "blockPosition": "middle"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "spacious",
+    "purpose": "split-callout",
+    "imagePattern": "large"
+  },
+  "contentPattern": {
+    "structure": "two dissimilar side-by-side cells (e.g. data/stat widget + featured article promo)",
+    "buttonCount": 2,
+    "imageCount": 1,
+    "hasDescription": true
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "two heterogeneous panels side-by-side on a light background",
+      "stat/ticker widget paired with a featured article or promo",
+      "general two-up informational layouts with a CTA per side"
+    ],
+    "notSuitableFor": [
+      "uniform repeating card grids (use a cards variant)",
+      "full-bleed background-image banners (use a hero variant)",
+      "rotating/interactive content (use a carousel variant)"
+    ]
+  },
+  "usage": {
+    "pagesUsing": ["/index"],
+    "reuseCount": 1,
+    "lastUsed": "2026-08-13T00:00:00.000Z"
+  }
+}

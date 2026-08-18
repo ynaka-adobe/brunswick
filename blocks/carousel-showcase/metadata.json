@@ -1,0 +1,40 @@
+{
+  "variantName": "carousel-showcase",
+  "baseBlock": "carousel",
+  "version": "1.0.0",
+  "created": "2026-08-13T00:00:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://www.brunswick.com/",
+    "originPage": "Brunswick corporate homepage",
+    "blockPosition": "middle"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "dark",
+    "density": "spacious",
+    "purpose": "innovation-showcase",
+    "imagePattern": "large"
+  },
+  "contentPattern": {
+    "structure": "per slide: illustration/image + heading + description",
+    "buttonCount": 0,
+    "imageCount": 1,
+    "hasDescription": true
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "one-up rotating showcases of themed pillars/capabilities on dark backgrounds",
+      "innovation/strategy highlight sliders with image + heading + paragraph per slide",
+      "editorial feature rotators paired with adjacent intro copy"
+    ],
+    "notSuitableFor": [
+      "logo/badge grids shown multiple-per-view",
+      "light-background promotional sliders",
+      "single static featured item (no rotation needed)"
+    ]
+  },
+  "usage": {
+    "pagesUsing": ["/index"],
+    "reuseCount": 1,
+    "lastUsed": "2026-08-13T00:00:00.000Z"
+  }
+}

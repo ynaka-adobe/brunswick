@@ -1,0 +1,40 @@
+{
+  "variantName": "tabs-grid",
+  "baseBlock": "tabs",
+  "version": "1.0.0",
+  "created": "2026-08-13T00:00:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://www.brunswick.com/",
+    "originPage": "Brunswick corporate homepage",
+    "blockPosition": "middle"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "spacious",
+    "purpose": "brand-directory",
+    "imagePattern": "icon"
+  },
+  "contentPattern": {
+    "structure": "per tab: category label + panel containing a grid of linked logo tiles",
+    "buttonCount": 0,
+    "imageCount": 1,
+    "hasDescription": false
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "category-switcher tabs whose panels contain logo/link grids",
+      "brand or product directories organized by category on a light background",
+      "tabbed interfaces where each panel holds image-led tile collections"
+    ],
+    "notSuitableFor": [
+      "simple two-or-three text-panel tab switchers with prose content",
+      "single-topic content that needs no tabbing",
+      "accordion-style stacked Q&A"
+    ]
+  },
+  "usage": {
+    "pagesUsing": ["/index"],
+    "reuseCount": 1,
+    "lastUsed": "2026-08-13T00:00:00.000Z"
+  }
+}

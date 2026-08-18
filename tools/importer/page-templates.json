@@ -1,0 +1,146 @@
+{
+  "metadata": {
+    "projectType": "da"
+  },
+  "templates": [
+    {
+      "name": "homepage",
+      "urls": [
+        "https://www.brunswick.com/"
+      ],
+      "coverageGaps": [],
+      "description": "Brunswick corporate homepage with video hero, ACES innovation carousel, stock/investor + featured article columns, brands tabs directory, news cards, sustainability and careers hero banners, and awards/accolades carousel",
+      "blocks": [
+        {
+          "name": "hero-banner",
+          "instances": [
+            ".page-banner.home-hero",
+            ".module.row-home-sustainability",
+            ".module.row-home-careers"
+          ]
+        },
+        {
+          "name": "carousel-showcase",
+          "instances": [
+            ".aces-slider"
+          ]
+        },
+        {
+          "name": "columns-split",
+          "instances": [
+            ".row-stock-article .row"
+          ]
+        },
+        {
+          "name": "tabs-grid",
+          "instances": [
+            ".brands-view"
+          ]
+        },
+        {
+          "name": "cards-article",
+          "instances": [
+            ".news-listing"
+          ]
+        },
+        {
+          "name": "carousel-logos",
+          "instances": [
+            ".accolade-slider"
+          ]
+        }
+      ],
+      "sections": [
+        {
+          "id": "rc2",
+          "name": "Video Hero",
+          "selector": ".page-banner.home-hero",
+          "style": null,
+          "blocks": [
+            "hero-banner"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "rc3",
+          "name": "ACES Innovation",
+          "selector": ".module.row-home-aces",
+          "style": "dark",
+          "blocks": [
+            "carousel-showcase"
+          ],
+          "defaultContent": [
+            ".row-home-aces .text-area"
+          ]
+        },
+        {
+          "id": "rc4",
+          "name": "Stock and Featured Article",
+          "selector": ".module.row-stock-article",
+          "style": "light",
+          "blocks": [
+            "columns-split"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "rc5",
+          "name": "Brands Directory",
+          "selector": ".module.module-brands-tabs",
+          "style": "light",
+          "blocks": [
+            "tabs-grid"
+          ],
+          "defaultContent": [
+            ".module-brands-tabs .module-header"
+          ]
+        },
+        {
+          "id": "rc6",
+          "name": "In the News",
+          "selector": ".module.row-home-news-alt",
+          "style": "light",
+          "blocks": [
+            "cards-article"
+          ],
+          "defaultContent": [
+            ".row-home-news-alt .text.center",
+            ".row-home-news-alt .link-wrapper.center"
+          ]
+        },
+        {
+          "id": "rc7",
+          "name": "Sustainability Banner",
+          "selector": ".module.row-home-sustainability",
+          "style": null,
+          "blocks": [
+            "hero-banner"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "rc8",
+          "name": "Careers Banner",
+          "selector": ".module.row-home-careers",
+          "style": null,
+          "blocks": [
+            "hero-banner"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "rc9",
+          "name": "Awards and Recognition",
+          "selector": ".module.module-careers-accolades",
+          "style": "accent",
+          "blocks": [
+            "carousel-logos"
+          ],
+          "defaultContent": [
+            ".module-careers-accolades .module-header"
+          ]
+        }
+      ]
+    }
+  ]
+}

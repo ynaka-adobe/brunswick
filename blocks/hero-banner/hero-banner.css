@@ -1,79 +1,159 @@
-/* hero-banner — full-bleed photographic banner with knockout text + yellow CTA */
+/*
+ * hero-banner — full-bleed background-media banner (Brunswick home hero variant)
+ * Row 1 = background image (video fallback on source), Row 2 = title + subheading + CTA.
+ * Values extracted from https://www.brunswick.com/ .page-banner.home-hero computed styles.
+ */
+
+/* full-bleed: cancel the section container max-width + padding + vertical margins */
+.hero-banner-container {
+  margin: 0;
+}
+
 .hero-banner-container .hero-banner-wrapper {
-  max-width: unset;
+  max-width: none;
   padding: 0;
 }
 
-.hero-banner {
+/* --- block: dark stage that centers the content over the media --- */
+.hero-banner.block {
   position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  height: 536px;
-  padding: 48px 24px;
+  min-height: 380px;
+  margin: 0;
+  padding: 48px 0;
   overflow: hidden;
-  color: var(--background-color);
+  isolation: isolate;
+  background-color: var(--dark-color); /* #000 fallback behind media */
+  color: #fff;
 }
 
-/* background photo */
-.hero-banner picture {
+/* --- row 1: background media, pulled out of flow to fill the block --- */
+.hero-banner.block > div:first-child {
   position: absolute;
   inset: 0;
-  z-index: -2;
+  z-index: 0;
+  margin: 0;
 }
 
-.hero-banner picture img {
+.hero-banner.block > div:first-child > div,
+.hero-banner.block > div:first-child p {
+  width: 100%;
+  max-width: none;
+  height: 100%;
+  margin: 0;
+}
+
+.hero-banner.block picture {
+  display: block;
+  height: 100%;
+}
+
+.hero-banner.block > div:first-child img {
   width: 100%;
   height: 100%;
+  max-width: none;
   object-fit: cover;
+  object-position: center;
 }
 
-/* dark scrim so knockout text stays legible */
-.hero-banner::after {
+/* dark overlay so white text stays legible across all three background images */
+.hero-banner.block::before {
   content: "";
   position: absolute;
   inset: 0;
-  z-index: -1;
-  background: linear-gradient(90deg, rgb(0 0 0 / 70%) 0%, rgb(0 0 0 / 35%) 55%, rgb(0 0 0 / 10%) 100%);
+  z-index: 1;
+  background: linear-gradient(to top, rgb(0 0 0 / 55%) 0%, rgb(0 0 0 / 20%) 55%, rgb(0 0 0 / 10%) 100%);
+  pointer-events: none;
 }
 
-.hero-banner > div {
-  max-width: 1200px;
+/* --- row 2: text content, centered container, left-aligned --- */
+/* stylelint-disable-next-line no-descending-specificity */
+.hero-banner.block > div:last-child {
+  position: relative;
+  z-index: 2;
+  box-sizing: border-box;
   width: 100%;
+  max-width: var(--content-max-width); /* 1200 */
   margin: 0 auto;
+  padding: 0 24px;
 }
 
-.hero-banner h1,
-.hero-banner h2 {
-  margin: 0 0 0.25em;
-  max-width: 640px;
-  color: var(--background-color);
+.hero-banner.block > div:last-child > div {
+  max-width: 770px;
+  text-align: left;
+}
+
+/* --- title --- */
+.hero-banner.block h2 {
+  margin: 0 0 20px;
+  color: #fff;
   font-family: var(--heading-font-family);
-  font-weight: var(--font-weight-bold);
-  font-size: var(--heading-font-size-xxl);
-  line-height: 1.1;
+  font-weight: 600;
+  font-size: 30px;
+  line-height: 1.05;
 }
 
-.hero-banner p {
-  max-width: 520px;
-  margin: 0 0 1.5em;
-  font-size: 1.25rem;
-  line-height: 1.4;
+/* --- subheading (scoped to the text row so it never hits the media wrapper <p>) --- */
+.hero-banner.block > div:last-child p {
+  max-width: 766px;
+  margin: 0 0 30px;
+  color: #fff;
+  font-family: var(--body-font-family);
+  font-weight: 400;
+  font-size: var(--body-font-size-m); /* 18px == source */
+  line-height: 1.65;
 }
 
-.hero-banner a.button:any-link,
-.hero-banner p strong {
+/* --- CTA: sharp near-black rectangle (overrides the global blue pill) --- */
+.hero-banner.block p.button-container {
+  margin: 0;
+}
+
+main .hero-banner.block a.button:any-link {
   display: inline-block;
-  background-color: var(--brand-yellow);
-  color: var(--text-strong-color);
-  font-weight: var(--font-weight-semibold);
-  padding: 0.625em 1.5em;
-  border-radius: var(--border-radius);
+  margin: 0;
+  padding: 12px 15px;
+  border: 0;
+  border-radius: 0;
+  background-color: #000018;
+  color: #fff;
+  font-family: var(--heading-font-family);
+  font-weight: 600;
+  font-size: 13px;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
 }
 
+main .hero-banner.block a.button:hover,
+main .hero-banner.block a.button:focus {
+  background-color: var(--accent-color);
+  border: 0;
+  color: #fff;
+}
+
+/* --- desktop --- */
 @media (width >= 900px) {
-  .hero-banner {
-    height: 536px;
-    padding: 64px 32px;
+  .hero-banner.block {
+    min-height: 640px;
+    padding: 80px 0;
+  }
+
+  .hero-banner.block h2 {
+    margin: 0 0 38px;
+    font-size: var(--heading-size-xxl); /* 64px (~source 67px) */
+  }
+
+  .hero-banner.block > div:last-child {
+    padding: 0 32px;
+  }
+
+  main .hero-banner.block a.button:any-link {
+    padding: 12px 24px;
+    font-size: 21px;
   }
 }

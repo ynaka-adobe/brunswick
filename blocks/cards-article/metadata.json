@@ -1,0 +1,44 @@
+{
+  "variantName": "cards-article",
+  "baseBlock": "cards",
+  "version": "1.0.0",
+  "created": "2026-08-13T00:00:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://www.brunswick.com/",
+    "originPage": "Brunswick corporate homepage",
+    "blockPosition": "middle"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "backdrop": "light-blue vertical gradient (#dcefff -> #8bccf8); source uses a background_image.png over a hidden navy #1e3566 fallback — rendered appearance is light blue, not navy",
+    "density": "spacious",
+    "purpose": "news-article",
+    "imagePattern": "featured-plus-stacked",
+    "cardBody": "white #fff, #555 text, 30px padding, no border/radius/shadow",
+    "cta": "square transparent button, 2px solid green #04e255 border (in-card 'Read More'); white-outline square for section-level 'View all news'"
+  },
+  "contentPattern": {
+    "structure": "per card: article image + date + headline + Read More CTA",
+    "buttonCount": 1,
+    "imageCount": 1,
+    "hasDescription": true,
+    "hasCTA": true
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "news / press-release listings on light backgrounds",
+      "article or blog card grids with image + date + headline + CTA",
+      "editorial 'latest posts' rows"
+    ],
+    "notSuitableFor": [
+      "compact icon + label callout strips",
+      "image-led navigation/category tiles without dates or CTAs",
+      "dark-background feature highlights"
+    ]
+  },
+  "usage": {
+    "pagesUsing": ["/index"],
+    "reuseCount": 1,
+    "lastUsed": "2026-08-13T00:00:00.000Z"
+  }
+}

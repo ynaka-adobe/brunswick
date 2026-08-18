@@ -1,0 +1,40 @@
+{
+  "variantName": "carousel-logos",
+  "baseBlock": "carousel",
+  "version": "1.0.0",
+  "created": "2026-08-13T00:00:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://www.brunswick.com/",
+    "originPage": "Brunswick corporate homepage",
+    "blockPosition": "bottom"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "accent",
+    "density": "compact",
+    "purpose": "awards-badges",
+    "imagePattern": "icon"
+  },
+  "contentPattern": {
+    "structure": "per slide: award/publication logo + caption + link",
+    "buttonCount": 0,
+    "imageCount": 1,
+    "hasDescription": true
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "awards & recognition rotators on accent/brand-colored backgrounds",
+      "logo/badge sliders showing several items per view with captions",
+      "partner or certification logo carousels linking to detail pages"
+    ],
+    "notSuitableFor": [
+      "full-bleed one-up image showcases with large text overlays",
+      "text-heavy editorial sliders",
+      "single static logo strips that do not need rotation"
+    ]
+  },
+  "usage": {
+    "pagesUsing": ["/index"],
+    "reuseCount": 1,
+    "lastUsed": "2026-08-13T00:00:00.000Z"
+  }
+}

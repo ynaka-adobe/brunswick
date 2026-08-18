@@ -1,0 +1,219 @@
+/*
+ * carousel-logos — "Awards and Recognition" logo slider
+ * Source: brunswick.com .accolade-slider (slick slider)
+ * Sits inside a full-width .section.accent (brand-blue #026afe, white text — set globally).
+ * Shows multiple white award badges per view, each with a two-line white caption.
+ * Values extracted from source computed styles (migration-work/carousel-logos-extracted.css).
+ */
+
+.carousel-logos {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  color: #fff;
+}
+
+/* --- slides container: stack the scroller above the nav arrows --- */
+.carousel-logos .carousel-logos-slides-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.carousel-logos .carousel-logos-slides,
+.carousel-logos .carousel-logos-slide-indicators {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.carousel-logos .carousel-logos-slides {
+  order: 1;
+  display: flex;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  overflow: scroll clip;
+}
+
+.carousel-logos .carousel-logos-slides::-webkit-scrollbar {
+  display: none;
+}
+
+/* --- individual slide: image + caption stacked and centred --- */
+.carousel-logos .carousel-logos-slide {
+  flex: 0 0 100%;
+  box-sizing: border-box;
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 0;
+  padding: 20px 12px;
+}
+
+/* award badge logo — 150x150, contained, centred (source values) */
+.carousel-logos .carousel-logos-slide .carousel-logos-slide-image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.carousel-logos .carousel-logos-slide .carousel-logos-slide-image p {
+  margin: 0;
+}
+
+.carousel-logos .carousel-logos-slide .carousel-logos-slide-image picture {
+  position: static;
+  display: block;
+  line-height: 0;
+}
+
+.carousel-logos .carousel-logos-slide .carousel-logos-slide-image picture > img {
+  width: 150px;
+  height: 150px;
+  margin: 0 auto;
+  object-fit: contain;
+}
+
+/* caption — plain centred white text, no overlay box */
+.carousel-logos .carousel-logos-slide .carousel-logos-slide-content {
+  position: static;
+  z-index: auto;
+  width: auto;
+  margin: 0;
+  padding: 0;
+  background: none;
+  color: #fff;
+  text-align: center;
+}
+
+.carousel-logos .carousel-logos-slide .carousel-logos-slide-content .button-container {
+  margin: 16px 0 20px;
+  text-align: center;
+}
+
+/* undo EDS auto button-decoration of the caption link -> two-line label */
+main .carousel-logos .carousel-logos-slide-content a.button:any-link {
+  display: inline;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  color: #fff;
+  font-family: var(--heading-font-family);
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 30px;
+  letter-spacing: normal;
+  text-align: center;
+  text-transform: none;
+  text-overflow: clip;
+  white-space: normal;
+}
+
+main .carousel-logos .carousel-logos-slide-content a.button:hover,
+main .carousel-logos .carousel-logos-slide-content a.button:focus {
+  border: 0;
+  background: none;
+  color: #fff;
+  text-decoration: underline;
+}
+
+/* --- prev / next arrows: centred below the logo row (matches source bottom controls) --- */
+.carousel-logos .carousel-logos-navigation-buttons {
+  order: 2;
+  position: static;
+  inset: auto;
+  transform: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  margin-top: 8px;
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+.carousel-logos .carousel-logos-navigation-buttons button {
+  position: relative;
+  width: 44px;
+  height: 44px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: none;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.carousel-logos .carousel-logos-navigation-buttons button:hover,
+.carousel-logos .carousel-logos-navigation-buttons button:focus-visible {
+  background: rgb(255 255 255 / 15%);
+}
+
+.carousel-logos .carousel-logos-navigation-buttons button::after {
+  display: block;
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: calc(50% + 2px);
+  width: 12px;
+  height: 12px;
+  border: 2px solid #fff;
+  border-bottom: 0;
+  border-left: 0;
+  transform: translate(-50%, -50%) rotate(-135deg);
+}
+
+.carousel-logos .carousel-logos-navigation-buttons button.slide-next::after {
+  left: calc(50% - 2px);
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+/* --- slide position indicators: small white dots, centred, no background bar --- */
+.carousel-logos .carousel-logos-slide-indicators {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin: 0;
+  padding: 8px 0 0;
+  background: none;
+  line-height: 0;
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+.carousel-logos .carousel-logos-slide-indicator button {
+  width: 10px;
+  height: 10px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: rgb(255 255 255 / 40%);
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.carousel-logos .carousel-logos-slide-indicator button:disabled,
+.carousel-logos .carousel-logos-slide-indicator button:hover,
+.carousel-logos .carousel-logos-slide-indicator button:focus-visible {
+  background: #fff;
+}
+
+/* --- responsive: 2 badges per view on tablet, 3 on desktop (source shows 3) --- */
+@media (width >= 600px) {
+  .carousel-logos .carousel-logos-slide {
+    flex-basis: 50%;
+  }
+}
+
+@media (width >= 900px) {
+  .carousel-logos .carousel-logos-slide {
+    flex-basis: 33.333%;
+  }
+}

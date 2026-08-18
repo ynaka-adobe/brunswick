@@ -1,0 +1,208 @@
+/* columns-split — two dissimilar panels: stock/investor callout + featured-article promo.
+   Values extracted from https://www.brunswick.com/ (.row-stock-article .row @1440px).
+   Section background (#d4e8ff / --light-color) is provided by global .section.light. */
+
+/* ---------- Row layout (mobile-first: stacked) ---------- */
+.columns-split > div {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  align-items: stretch;
+}
+
+.columns-split .columns-split-stock,
+.columns-split .columns-split-article {
+  display: flex;
+  flex-direction: column;
+}
+
+/* ---------- LEFT: stock / investor callout (transparent over light bg) ---------- */
+.columns-split .columns-split-stock-head {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+.columns-split .columns-split-stock-icon {
+  flex: 0 0 auto;
+  width: 85px;
+  margin: 0;
+}
+
+.columns-split .columns-split-stock-icon picture,
+.columns-split .columns-split-stock-icon img {
+  display: block;
+  width: 85px;
+  height: 85px;
+}
+
+.columns-split .columns-split-stock-ticker {
+  margin: 0;
+  font-family: var(--heading-font-family);
+  font-size: 48px;
+  font-weight: 600;
+  line-height: 1.42;
+  color: var(--accent-color);
+}
+
+.columns-split .columns-split-stock-price {
+  margin: 0;
+  font-family: var(--heading-font-family);
+  font-size: 48px;
+  font-weight: 600;
+  line-height: 1.42;
+  color: var(--heading-color);
+}
+
+.columns-split .columns-split-stock-change {
+  margin: 0;
+  font-family: var(--body-font-family);
+  font-size: 28px;
+  font-weight: 400;
+  color: var(--heading-color);
+}
+
+/* INVESTOR RELATIONS — square outline (black), overrides the global blue pill */
+.columns-split .columns-split-stock .button-container {
+  margin: 24px 0 0;
+}
+
+main .columns-split .columns-split-stock a.button:any-link {
+  margin: 0;
+  border: 2px solid var(--heading-color);
+  border-radius: 0;
+  padding: 12px 24px;
+  font-family: var(--heading-font-family);
+  font-size: 21px;
+  font-weight: 600;
+  line-height: 21px;
+  letter-spacing: normal;
+  text-transform: uppercase;
+  background-color: transparent;
+  color: var(--heading-color);
+}
+
+main .columns-split .columns-split-stock a.button:hover,
+main .columns-split .columns-split-stock a.button:focus {
+  background-color: var(--heading-color);
+  border-color: var(--heading-color);
+  color: #fff;
+}
+
+/* ---------- RIGHT: featured-article promo (white box) ---------- */
+.columns-split .columns-split-article {
+  background-color: #fff;
+}
+
+.columns-split .columns-split-article-media p {
+  margin: 0;
+}
+
+.columns-split .columns-split-article-media picture {
+  display: block;
+}
+
+.columns-split .columns-split-article-media img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.columns-split .columns-split-article-body {
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+}
+
+.columns-split .columns-split-article-body p {
+  margin: 0;
+  font-family: var(--heading-font-family);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.42;
+  color: var(--heading-color);
+}
+
+.columns-split .columns-split-article-body h3 {
+  margin: 8px 0 20px;
+  font-family: var(--heading-font-family);
+  font-size: 23px;
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: normal;
+  text-transform: none;
+  color: var(--accent-color);
+
+  /* source clamps the headline to 3 lines with an ellipsis */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+}
+
+/* READ MORE — square outline (green), overrides the global blue pill */
+.columns-split .columns-split-article-body .button-container {
+  margin: 20px 0 0;
+}
+
+main .columns-split .columns-split-article-body a.button:any-link {
+  margin: 0;
+  border: 2px solid #04e255;
+  border-radius: 0;
+  padding: 12px 24px;
+  font-family: var(--heading-font-family);
+  font-size: 21px;
+  font-weight: 600;
+  line-height: 21px;
+  letter-spacing: normal;
+  text-transform: uppercase;
+  background-color: transparent;
+  color: var(--heading-color);
+}
+
+main .columns-split .columns-split-article-body a.button:hover,
+main .columns-split .columns-split-article-body a.button:focus {
+  background-color: #04e255;
+  border-color: #04e255;
+  color: var(--heading-color);
+}
+
+/* ---------- Desktop: 5 / 7 split, side-by-side ---------- */
+@media (width >= 900px) {
+  .columns-split > div {
+    flex-direction: row;
+    gap: 30px;
+    align-items: stretch;
+  }
+
+  .columns-split .columns-split-stock {
+    flex: 5;
+    justify-content: flex-start;
+  }
+
+  .columns-split .columns-split-stock .button-container {
+    margin-top: auto;
+  }
+
+  .columns-split .columns-split-article {
+    flex: 7;
+    flex-direction: row;
+    align-items: stretch;
+  }
+
+  /* image column fixed at ~340px, text column fills the rest */
+  .columns-split .columns-split-article-media {
+    flex: 0 0 340px;
+  }
+
+  .columns-split .columns-split-article-media picture,
+  .columns-split .columns-split-article-media img {
+    height: 100%;
+  }
+
+  .columns-split .columns-split-article-body {
+    flex: 1;
+    justify-content: center;
+  }
+}

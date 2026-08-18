@@ -22,6 +22,10 @@ import {
   applyTargetHeroMboxIfConfigured,
 } from './target.js';
 
+// Re-export UE instrumentation helper so blocks can import it from scripts.js
+// (the established convention used by the cards-* blocks).
+export { moveInstrumentation } from '../ue/scripts/ue-utils.js';
+
 /**
  * Builds hero block and prepends to main in a new section.
  * @param {Element} main The container element
@@ -129,7 +133,6 @@ function decorateSections(main) {
  * Decorates the main element.
  * @param {Element} main The main element
  */
-// eslint-disable-next-line import/prefer-default-export
 export function decorateMain(main) {
   // hopefully forward compatible button decoration
   decorateButtons(main);

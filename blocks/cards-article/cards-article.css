@@ -1,0 +1,169 @@
+/* cards-article — "In the News" listing
+ * Values extracted from https://www.brunswick.com/ .module.row-home-news-alt
+ * Mobile-first; asymmetric featured layout enabled at >= 900px.
+ */
+
+/* ---- Section backdrop ----
+ * Source renders a soft light-blue vertical gradient (background_image.png over
+ * a hidden navy #1e3566 fallback). Sampled stops from the source PNG.
+ * Scoped to the block's section container so heading + intro + cards + "view all"
+ * share the same backdrop (matches source). Overrides the flat .section.light fill.
+ */
+main .section.light.cards-article-container {
+  background: linear-gradient(180deg, #dcefff 0%, #c8e2fb 25%, #a4cff3 55%, #8bccf8 100%);
+}
+
+/* Source centers the heading, intro and "view all news" over the backdrop */
+main .section.cards-article-container .default-content-wrapper {
+  text-align: center;
+}
+
+/* "VIEW ALL NEWS" — section-level CTA (default content, outside the block).
+ * Source: transparent fill, 2px solid white square border, white uppercase label.
+ */
+main .section.cards-article-container .default-content-wrapper a.button:any-link {
+  border: 2px solid #fff;
+  border-radius: 0;
+  padding: 12px 24px;
+  font-family: var(--heading-font-family);
+  font-weight: 600;
+  font-size: 21px;
+  text-transform: uppercase;
+  background-color: transparent;
+  color: #fff;
+  white-space: normal;
+}
+
+main .section.cards-article-container .default-content-wrapper a.button:hover,
+main .section.cards-article-container .default-content-wrapper a.button:focus {
+  background-color: #fff;
+  border-color: #fff;
+  color: var(--navy-color);
+}
+
+/* ---- Card grid ---- */
+.cards-article > ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 30px;
+}
+
+/* ---- Card ---- flat white card, no border / radius / shadow (source) */
+.cards-article > ul > li {
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+}
+
+/* ---- Card image ---- */
+.cards-article-card-image {
+  line-height: 0;
+}
+
+.cards-article-card-image p {
+  margin: 0;
+  line-height: 0;
+}
+
+.cards-article > ul > li img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 2 / 1; /* source small cards 470x237 ≈ 2/1 */
+  object-fit: cover;
+}
+
+/* ---- Card body ---- white, #555 text, 30px padding (source .text) */
+.cards-article-card-body {
+  padding: 30px;
+  background-color: #fff;
+  color: var(--text-color);
+}
+
+/* date — first paragraph */
+.cards-article-card-body > p:first-child {
+  margin: 0;
+  font-family: var(--heading-font-family);
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1.2;
+  color: var(--heading-color);
+}
+
+/* headline */
+.cards-article-card-body h3 {
+  margin: 16px 0 25px;
+  font-family: var(--heading-font-family);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.63;
+}
+
+.cards-article-card-body h3 a:any-link {
+  color: var(--accent-color);
+  font-weight: 500;
+}
+
+.cards-article-card-body h3 a:hover,
+.cards-article-card-body h3 a:focus {
+  text-decoration: underline;
+}
+
+/* ---- Read More CTA ----
+ * Source: transparent fill, 2px solid green (#04e255) square border, black
+ * uppercase Titillium label. Overrides the global solid-blue pill button.
+ */
+.cards-article-card-body .button-container {
+  margin: 0;
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+main .cards-article a.button:any-link {
+  margin: 0;
+  border: 2px solid #04e255;
+  border-radius: 0;
+  padding: 12px 24px;
+  font-family: var(--heading-font-family);
+  font-weight: 600;
+  font-size: 21px;
+  letter-spacing: normal;
+  text-transform: uppercase;
+  background-color: transparent;
+  color: var(--heading-color);
+  white-space: normal;
+}
+
+/* stylelint-disable no-descending-specificity */
+main .cards-article a.button:hover,
+main .cards-article a.button:focus {
+  background-color: #04e255;
+  border-color: #04e255;
+  color: #fff;
+}
+/* stylelint-enable no-descending-specificity */
+
+/* ---- Desktop: asymmetric featured layout ---- */
+@media (width >= 900px) {
+  main .section.light.cards-article-container {
+    padding: 125px 0; /* source .module.row-home-news-alt */
+  }
+
+  .cards-article > ul {
+    /* featured card ~670 : stacked cards ~470 -> ~1.4 : 1 */
+    grid-template-columns: 1.4fr 1fr;
+    align-items: start;
+  }
+
+  /* first card is the tall featured one on the left, spanning both rows */
+  .cards-article > ul > li:first-child {
+    grid-column: 1;
+    grid-row: 1 / span 2;
+  }
+
+  /* featured image is portrait (source 670x772 ≈ 0.868) */
+  .cards-article > ul > li:first-child img {
+    aspect-ratio: 670 / 772;
+  }
+}

@@ -1,3 +1,5 @@
+@import url('brand.css');
+
 /*
  * Copyright 2020 Adobe. All rights reserved.
  * This file is licensed to you under the Apache License, Version 2.0 (the "License");
@@ -10,49 +12,40 @@
  * governing permissions and limitations under the License.
  */
 
+/*
+ * NOTE: Colors, fonts, section-padding and heading sizes are defined in brand.css
+ * (imported above). Only values not owned by the brand tokens live here.
+ */
 :root {
-  /* colors */
-  --background-color: white;
-  --light-color: #f8f8f8;
-  --dark-color: #505050;
-  --text-color: #131313;
-  --link-color: #3b63fb;
-  --link-hover-color: #1d3ecf;
+  /* body sizes (mobile-first) */
+  --body-font-size-m: 18px;
+  --body-font-size-s: 16px;
+  --body-font-size-xs: 14px;
 
-  /* fonts */
-  --body-font-family: roboto, roboto-fallback, sans-serif;
-  --heading-font-family: roboto-condensed, roboto-condensed-fallback, sans-serif;
-
-  /* body sizes */
-  --body-font-size-m: 22px;
-  --body-font-size-s: 19px;
-  --body-font-size-xs: 17px;
-
-  /* heading sizes */
-  --heading-font-size-xxl: 55px;
-  --heading-font-size-xl: 44px;
-  --heading-font-size-l: 34px;
-  --heading-font-size-m: 27px;
-  --heading-font-size-s: 24px;
-  --heading-font-size-xs: 22px;
+  /* heading sizes — mapped to brand tokens (mobile-first below, desktop in @media) */
+  --heading-font-size-xxl: 40px;
+  --heading-font-size-xl: 32px;
+  --heading-font-size-l: 20px;
+  --heading-font-size-m: 18px;
+  --heading-font-size-s: 16px;
+  --heading-font-size-xs: 15px;
 
   /* nav heights */
-  --nav-height: 64px;
   --breadcrumbs-height: 34px;
   --header-height: var(--nav-height);
 }
 
-/* fallback fonts */
+/* fallback fonts (metric-matched to reduce CLS while webfonts load) */
 @font-face {
-  font-family: roboto-condensed-fallback;
-  size-adjust: 88.82%;
+  font-family: "Titillium Web-fallback";
+  size-adjust: 96%;
   src: local('Arial');
 }
 
 @font-face {
-  font-family: roboto-fallback;
-  size-adjust: 99.529%;
-  src: local('Arial');
+  font-family: "EB Garamond-fallback";
+  size-adjust: 100%;
+  src: local('Georgia');
 }
 
 @media (width >= 900px) {
@@ -62,13 +55,13 @@
     --body-font-size-s: 16px;
     --body-font-size-xs: 14px;
 
-    /* heading sizes */
-    --heading-font-size-xxl: 45px;
-    --heading-font-size-xl: 36px;
-    --heading-font-size-l: 28px;
-    --heading-font-size-m: 22px;
-    --heading-font-size-s: 20px;
-    --heading-font-size-xs: 18px;
+    /* heading sizes — desktop values from brand.css tokens */
+    --heading-font-size-xxl: var(--heading-size-xxl);
+    --heading-font-size-xl: var(--heading-size-xl);
+    --heading-font-size-l: var(--heading-size-l);
+    --heading-font-size-m: var(--heading-size-m);
+    --heading-font-size-s: var(--heading-size-s);
+    --heading-font-size-xs: var(--heading-size-xs);
   }
 }
 
@@ -116,7 +109,8 @@ h6 {
   margin-bottom: 0.25em;
   font-family: var(--heading-font-family);
   font-weight: 600;
-  line-height: 1.25;
+  line-height: 1.07;
+  color: var(--heading-color);
   scroll-margin: 40px;
 }
 
@@ -166,34 +160,40 @@ a:any-link {
   color: var(--link-color);
   text-decoration: none;
   word-break: break-word;
+  transition: color 0.2s ease;
 }
 
-a:hover {
+a:hover,
+a:focus {
   color: var(--link-hover-color);
   text-decoration: underline;
 }
 
-/* buttons */
+/* buttons — Brunswick CTA style: solid brand-blue pill, uppercase Titillium label */
 a.button:any-link,
 button {
   box-sizing: border-box;
   display: inline-block;
   max-width: 100%;
   margin: 12px 0;
-  border: 2px solid transparent;
+  border: 2px solid var(--accent-color);
   border-radius: 2.4em;
-  padding: 0.5em 1.2em;
-  font-family: var(--body-font-family);
+  padding: 0.6em 1.8em;
+  font-family: var(--heading-font-family);
   font-style: normal;
-  font-weight: 500;
+  font-weight: 600;
+  font-size: var(--body-font-size-s);
   line-height: 1.25;
+  letter-spacing: 0.04em;
   text-align: center;
   text-decoration: none;
-  background-color: var(--link-color);
-  color: var(--background-color);
+  text-transform: uppercase;
+  background-color: var(--accent-color);
+  color: #fff;
   cursor: pointer;
   text-overflow: ellipsis;
   white-space: nowrap;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
 }
 
 a.button:hover,
@@ -201,20 +201,50 @@ a.button:focus,
 button:hover,
 button:focus {
   background-color: var(--link-hover-color);
+  border-color: var(--link-hover-color);
+  color: #fff;
   cursor: pointer;
 }
 
 button:disabled,
 button:disabled:hover {
   background-color: var(--light-color);
+  border-color: var(--light-color);
+  color: var(--text-color);
   cursor: unset;
 }
 
+/* secondary — outline pill */
 a.button.secondary,
 button.secondary {
-  background-color: unset;
-  border: 2px solid currentcolor;
-  color: var(--text-color);
+  background-color: transparent;
+  border: 2px solid var(--accent-color);
+  color: var(--accent-color);
+}
+
+a.button.secondary:hover,
+a.button.secondary:focus,
+button.secondary:hover,
+button.secondary:focus {
+  background-color: var(--accent-color);
+  color: #fff;
+}
+
+/* on dark / accent sections, buttons invert to a white outline */
+.section.dark a.button:any-link,
+.section.accent a.button:any-link {
+  background-color: #fff;
+  border-color: #fff;
+  color: var(--accent-color);
+}
+
+.section.dark a.button:hover,
+.section.dark a.button:focus,
+.section.accent a.button:hover,
+.section.accent a.button:focus {
+  background-color: transparent;
+  border-color: #fff;
+  color: #fff;
 }
 
 main img {
@@ -240,7 +270,7 @@ main > .section {
 }
 
 main > .section > div {
-  max-width: 1200px;
+  max-width: var(--content-max-width);
   margin: auto;
   padding: 0 24px;
 }
@@ -260,5 +290,40 @@ main .section.light,
 main .section.highlight {
   background-color: var(--light-color);
   margin: 0;
-  padding: 40px 0;
+  padding: var(--section-padding) 0;
+}
+
+main .section.dark {
+  background-color: var(--dark-color);
+  color: #fff;
+  margin: 0;
+  padding: var(--section-padding) 0;
+}
+
+main .section.accent {
+  background-color: var(--accent-color);
+  color: #fff;
+  margin: 0;
+  padding: var(--section-padding) 0;
+}
+
+/* headings and links keep readable contrast on dark / accent backgrounds */
+main .section.dark h1,
+main .section.dark h2,
+main .section.dark h3,
+main .section.dark h4,
+main .section.dark h5,
+main .section.dark h6,
+main .section.accent h1,
+main .section.accent h2,
+main .section.accent h3,
+main .section.accent h4,
+main .section.accent h5,
+main .section.accent h6 {
+  color: #fff;
+}
+
+main .section.dark a:any-link,
+main .section.accent a:any-link {
+  color: #fff;
 }
